@@ -105,8 +105,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         [MOVE_PAY_DAY] =
             {
                 .effect = EFFECT_PAY_DAY,
-                .power = 40,
-                .type = TYPE_NORMAL,
+                .power = 90,
+                .type = TYPE_DARK,
                 .accuracy = 100,
                 .pp = 20,
                 .secondaryEffectChance = 100,
@@ -319,27 +319,19 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
         [MOVE_WHIRLWIND] =
             {
-#if B_UPDATED_MOVE_DATA >= GEN_6
-                .accuracy = 0,
-                .flags = FLAG_MAGIC_COAT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
-#elif B_UPDATED_MOVE_DATA == GEN_5
+                .effect = EFFECT_HIT_SWITCH_TARGET,
+                .power = 80,
+                .type = TYPE_FLYING,
                 .accuracy = 100,
-                .flags = FLAG_PROTECT_AFFECTED | FLAG_MAGIC_COAT_AFFECTED |
-                         FLAG_MIRROR_MOVE_AFFECTED,
-#else
-                .accuracy = 100,
-                .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
-#endif
-                .effect = EFFECT_ROAR,
-                .power = 0,
-                .type = TYPE_NORMAL,
                 .pp = 20,
                 .secondaryEffectChance = 0,
                 .target = MOVE_TARGET_SELECTED,
-                .priority = -6,
-                .split = SPLIT_STATUS,
-                .zMovePower = 0,
-                .zMoveEffect = Z_EFFECT_SPDEF_UP_1,
+                .priority = 0,
+                .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED |
+                         FLAG_MIRROR_MOVE_AFFECTED,
+                .split = SPLIT_SPECIAL,
+                .zMovePower = 120,
+                .zMoveEffect = Z_EFFECT_NONE,
             },
 
         [MOVE_FLY] =
@@ -1058,7 +1050,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
                 .target = MOVE_TARGET_SELECTED,
                 .priority = 0,
                 .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED |
-                         FLAG_KINGS_ROCK_AFFECTED,
+                         FLAG_KINGS_ROCK_AFFECTED |
+                         FLAG_MEGA_LAUNCHER_BOOST,
                 .split = SPLIT_SPECIAL,
                 .zMovePower = 100,
                 .zMoveEffect = Z_EFFECT_NONE,
@@ -1081,7 +1074,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
                 .target = MOVE_TARGET_SELECTED,
                 .priority = 0,
                 .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED |
-                         FLAG_KINGS_ROCK_AFFECTED,
+                         FLAG_KINGS_ROCK_AFFECTED |
+                         FLAG_MEGA_LAUNCHER_BOOST,
                 .split = SPLIT_SPECIAL,
                 .zMoveEffect = Z_EFFECT_NONE,
             },
@@ -1182,7 +1176,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
                 .target = MOVE_TARGET_SELECTED,
                 .priority = 0,
                 .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED |
-                         FLAG_SHEER_FORCE_BOOST,
+                         FLAG_SHEER_FORCE_BOOST |
+                         FLAG_MEGA_LAUNCHER_BOOST,
                 .split = SPLIT_SPECIAL,
                 .zMovePower = 120,
                 .zMoveEffect = Z_EFFECT_NONE,
@@ -5816,7 +5811,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
                 .target = MOVE_TARGET_SELECTED,
                 .priority = 0,
                 .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED |
-                         FLAG_KINGS_ROCK_AFFECTED,
+                         FLAG_KINGS_ROCK_AFFECTED |
+                         FLAG_MEGA_LAUNCHER_BOOST,
                 .split = SPLIT_SPECIAL,
                 .zMovePower = 200,
                 .zMoveEffect = Z_EFFECT_NONE,
@@ -8157,7 +8153,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
                 .target = MOVE_TARGET_SELECTED,
                 .priority = 0,
                 .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED |
-                         FLAG_KINGS_ROCK_AFFECTED | FLAG_SHEER_FORCE_BOOST,
+                         FLAG_KINGS_ROCK_AFFECTED | FLAG_SHEER_FORCE_BOOST |
+                         FLAG_MEGA_LAUNCHER_BOOST,
                 .split = SPLIT_SPECIAL,
                 .zMovePower = 160,
                 .zMoveEffect = Z_EFFECT_NONE,

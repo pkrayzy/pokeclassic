@@ -2177,7 +2177,8 @@ BattleScript_GrowthSpAtk:
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_GrowthEnd:
-	goto BattleScript_MoveEnd
+	recoverbasedonsunlight BattleScript_AlreadyAtFullHp
+	goto BattleScript_PresentHealTarget
 
 BattleScript_EffectSoak:
 	attackcanceler
@@ -3636,7 +3637,11 @@ BattleScript_ImmunityProtected::
 
 BattleScript_EffectPayDay::
 	setmoveeffect MOVE_EFFECT_PAYDAY
-	goto BattleScript_EffectHit
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	jumpifstatus2 BS_ATTACKER, STATUS2_MULTIPLETURNS, BattleScript_EffectRampage2
+	ppreduce
 
 BattleScript_EffectAuroraVeil:
 	attackcanceler
